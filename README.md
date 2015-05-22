@@ -6,5 +6,7 @@ This was mainly made to demonstrate some of the capabilities and speed that come
 
 Nonetheless, try a puzzle!
 
+Note: Sudoku generator and solver built by @dachev [link to repo](https://github.com/dachev/sudoku)
+
 ## DEMO
 ![Demo gif](https://github.com/christopherdro/react-native-sudoku/blob/master/demo.gif)
