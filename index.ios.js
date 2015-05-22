@@ -35,8 +35,6 @@ var SudokuGame = React.createClass({
 
     if(Sudoku.boardmatches(_.flatten(puzzle), solved)){
       AlertIOS.alert('Game Solved');
-    } else {
-      console.log('keep playing');
     }
   },
 
@@ -86,7 +84,6 @@ var SudokuGame = React.createClass({
   },
 
   render() {
-    console.log(solved);
     return (
       <View>
         <View style={styles.header}>
