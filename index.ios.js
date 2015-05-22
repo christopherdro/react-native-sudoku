@@ -8,20 +8,8 @@ var _ = require('lodash');
 var puzzle  = _.chunk(Sudoku.makepuzzle(), 9);
 var solved = Sudoku.solvepuzzle(_.flatten(puzzle));
 
-function onInput(key, value){
-  var gridpoint = key.split('-');
-  var x = gridpoint[0];
-  var y = gridpoint[1];
-  puzzle[x][y] = parseInt(--value);
-
-  if(Sudoku.boardmatches(_.flatten(puzzle), solved)){
-    console.log('Game Solved');
-  } 
-}
-console.log(_.flatten(puzzle));
-console.log(_.chunk(solved, 9));
-
 var {
+  AlertIOS,
   AppRegistry,
   StyleSheet,
   PixelRatio,
@@ -39,8 +27,17 @@ var SudokuGame = React.createClass({
     }
   },
 
-  _onInput(input) {
-    console.log(input);
+  _onInput(key, input) {
+    var gridpoint = key.split('-');
+    var x = gridpoint[0];
+    var y = gridpoint[1];
+    puzzle[x][y] = parseInt(--input);
+
+    if(Sudoku.boardmatches(_.flatten(puzzle), solved)){
+      AlertIOS.alert('Game Solved');
+    } else {
+      console.log('keep playing');
+    }
   },
 
   newGame() {
@@ -56,10 +53,10 @@ var SudokuGame = React.createClass({
     var blocks = [];
     var puzzle = _.chunk(this.state.puzzle, 9);
 
-    puzzle.map(function(row){
+    puzzle.map((row) => {
       var rowSeperator = ((rows.length == 2 || rows.length == 5)) ? true : false;
 
-      row.map(function(block){
+      row.map((block) => {
         var key = rows.length + '-' + blocks.length;
         var blockSeperator = ((blocks.length == 2 || blocks.length == 5)) ? true : false;
 
@@ -70,7 +67,7 @@ var SudokuGame = React.createClass({
                 clearTextOnFocus={true}
                 keyboardType={'number-pad'}
                 style={styles.textInput}
-                onChangeText={(input) => this._onInput(input)}
+                onChangeText={(input) => this._onInput(key, input)}
               />
             </View>
           );
@@ -89,6 +86,7 @@ var SudokuGame = React.createClass({
   },
 
   render() {
+    console.log(solved);
     return (
       <View>
         <View style={styles.header}>
