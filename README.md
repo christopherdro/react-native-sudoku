@@ -4,7 +4,7 @@ A simple Sudoku game built with React Native.
 
 This was mainly made to demonstrate some of the capabilities and speed that comes with React Native and what can be accomplished in a few hours.
 
-Nonetheless, try a puzzle!
+Try a puzzle!
 
 Note: Sudoku generator and solver built by [@dachev](https://github.com/dachev/sudoku)
 

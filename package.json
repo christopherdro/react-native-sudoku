@@ -8,6 +8,6 @@
   "dependencies": {
     "lodash": "^3.9.1",
     "react-native": "^0.4.4",
-    "sudoku": "*"
+    "sudoku": "christopherdro/sudoku.git"
   }
 }
