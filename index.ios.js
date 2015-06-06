@@ -5,8 +5,8 @@ var Sudoku = require('sudoku');
 var Dimensions = require('Dimensions');
 var _ = require('lodash');
 
-var puzzle  = _.chunk(Sudoku.makepuzzle(), 9);
-var solved = Sudoku.solvepuzzle(_.flatten(puzzle));
+// var puzzle  = _.chunk(Sudoku.makepuzzle(), 9);
+// var solved = Sudoku.solvepuzzle(_.flatten(puzzle));
 
 var {
   AlertIOS,
@@ -23,11 +23,12 @@ var {
 var SudokuGame = React.createClass({
   getInitialState() {
     return {
-      puzzle: _.flatten(puzzle)
+      puzzle: Sudoku.makepuzzle()
     }
   },
 
   _onInput(key, input) {
+    var solved = Sudoku.solvepuzzle(_.flatten(this.state.puzzle));
     var gridpoint = key.split('-');
     var x = gridpoint[0];
     var y = gridpoint[1];
@@ -43,6 +44,7 @@ var SudokuGame = React.createClass({
   },
 
   solvePuzzle() {
+    var solved = Sudoku.solvepuzzle(_.flatten(this.state.puzzle));
     this.setState({puzzle: solved});
   },
 
